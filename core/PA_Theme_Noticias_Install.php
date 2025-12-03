@@ -23,7 +23,6 @@ class PAThemeNoticiasInstall
 		add_action('init', array($this, 'changePostObjectLabel'));
 		add_action('admin_menu', array($this, 'changePostMenuLabel'));
 		add_filter('manage_post_posts_columns', array($this, 'removeColumns'), 10001);
-		add_action('init', array($this, 'addTaxOnPress') );
 	}
 
 	function installRoutines()
@@ -102,6 +101,36 @@ class PAThemeNoticiasInstall
 
 		register_taxonomy('xtt-pa-format', ['post'], $args);
 
+        /**
+		 *
+		 * Classificação
+		 *
+		 */
+
+		$labels = array(
+			'name'              => __('Classification', 'iasd'),
+			'singular_name'     => __('Classification', 'iasd'),
+			'search_items'      => __('Search item', 'iasd'),
+			'all_items'         => __('All items', 'iasd'),
+			'edit_item'         => __('Edit item', 'iasd'),
+			'update_item'       => __('Update item', 'iasd'),
+			'add_new_item'      => __('Add new item', 'iasd'),
+			'new_item_name'     => __('New item', 'iasd'),
+			'menu_name'         => __('Classification', 'iasd'),
+		);
+		$args   = array(
+			'hierarchical'       => true, // make it hierarchical (like categories)
+			'labels'             => $labels,
+			//'show_ui'            => checkRole('administrator'),
+			'show_admin_column'  => true,
+			'show_in_quick_edit' => false,
+			'query_var'          => true,
+			'show_in_rest'       => true, // add support for Gutenberg editor
+			'rewrite'            => ['slug' => sanitize_title(__('xtt-pa-classification-slug', 'iasd'))],
+		);
+
+		register_taxonomy('xtt-pa-classification', ['post'], $args);
+
 		/**
 		 *
 		 * FORMATO DE POST
@@ -171,6 +200,9 @@ class PAThemeNoticiasInstall
 
 		// register_taxonomy('xtt-pa-regiao', ['post'], $args);
 
+		register_taxonomy_for_object_type('xtt-pa-editorias', 'press');
+		register_taxonomy_for_object_type('xtt-pa-owner', 'press');
+
 		foreach (['acf/include_field_types', 'acf/register_fields'] as $hook) {
 			add_filter($hook, function () {
 				return new PhoneNumberField(
@@ -213,12 +245,6 @@ class PAThemeNoticiasInstall
             get_stylesheet_directory_uri() . '/assets/css/admin-metabox.css'
         );
     }
-	    
-	function addTaxOnPress()
-    	{
-        	register_taxonomy_for_object_type('xtt-pa-editorias', 'press');
-		register_taxonomy_for_object_type('xtt-pa-owner', 'press');
-   	 }
 
 	function removePostFormats()
 	{

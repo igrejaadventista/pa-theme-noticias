@@ -35,7 +35,9 @@ class PA_Enqueue_Files
 						'taxonomies'   => [
 							'xtt-pa-editorias',
 							'xtt-pa-owner',
-							'xtt-pa-sedes'
+							'xtt-pa-sedes',
+                            'xtt-pa-class',
+                            'xtt-pa-classification'
 						],
 					],
 					[
