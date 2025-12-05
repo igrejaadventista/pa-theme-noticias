@@ -19,7 +19,7 @@ RUN cd /var/www/build \
   && yarn \
   && yarn build:production \
   && rm -rf assets/scss node_modules bash \
-  && find . -type d -name 'node_modules' -exec rm - rf {} + \
+  && find . -type d -name 'node_modules' -exec rm -rf {} + \
   && find . -type d -name '*.git' -exec rm -rf {} + \
   && find . -type f -name '*.map' -exec rm {} + \
   && find . -type f -name '*.json' -exec rm {} + \
