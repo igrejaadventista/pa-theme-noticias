@@ -65,3 +65,4 @@ class PA_Enqueue_Files
 	}
 }
 $PA_Enqueue_Files = new PA_Enqueue_Files();
+
