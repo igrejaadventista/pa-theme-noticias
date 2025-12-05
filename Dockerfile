@@ -18,7 +18,7 @@ RUN cd /var/www/build \
   && composer dump -o \
   && yarn \
   && yarn build:production \
-  && rm -rf assets/scss node_modules bash \
+  && rm -rf assets/scss node_modules \
   && find . -type d -name 'node_modules' -exec rm -rf {} + \
   && find . -type d -name '*.git' -exec rm -rf {} + \
   && find . -type f -name '*.map' -exec rm {} + \
@@ -28,6 +28,6 @@ RUN cd /var/www/build \
   && find . -type f -name 'README*' -exec rm {} + \
   && find . -type f -name '*.lock' -exec rm {} + \
   && find . -type f -name '*.mix.*' -exec rm {} + \
-  && find . -type f -name '*.txt' -exec rm {} + 
+  && find . -type f -name '*.txt' -exec rm {} +
 
 #  RUN cat /var/www/build/assets/js/script.js
