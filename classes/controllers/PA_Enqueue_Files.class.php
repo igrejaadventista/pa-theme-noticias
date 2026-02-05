@@ -44,13 +44,6 @@ class PA_Enqueue_Files
                             'xtt-pa-classification'
 						],
 					],
-					[
-						'post_type'    => 'press',
-						'taxonomies'   => [
-							'xtt-pa-editorias',
-							'xtt-pa-owner'
-						],
-					]
 				],
 				'unregisterBlocks' => [
 					'acf/p-a-magazines',
