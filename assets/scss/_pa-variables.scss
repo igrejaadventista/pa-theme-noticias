@@ -1,4 +1,5 @@
 body {
-  @include color(#036);
+  @include color(#003366);
+  --pa-color-default-light: #003366;
   --pa-color-default-aux: #bfd2e6;
 }
