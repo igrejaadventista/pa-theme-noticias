@@ -32,6 +32,16 @@
   overflow: hidden;
 }
 
+.pa-content-container a,
+.pa-content a {
+  color: #00448f;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
 .pa-content-container header .pa-post-meta span {
   color: var(--pa-color-gray01);
   font-weight: bold;
