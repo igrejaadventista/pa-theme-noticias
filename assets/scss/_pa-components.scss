@@ -32,9 +32,10 @@
   overflow: hidden;
 }
 
-.pa-content-container a,
-.pa-content a {
-  color: #00448f;
+// Cor específica para links da seção "Leia também" (bloco de lista)
+.pa-content-container ul.wp-block-list a,
+.pa-content ul.wp-block-list a {
+  color: #00448f !important;
   text-decoration: none;
 
   &:hover {
