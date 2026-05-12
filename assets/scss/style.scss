@@ -3,7 +3,7 @@ Theme Name: PA - News (Child)
 Theme URI: adventistas.org
 Description: News child theme for noticias.adventistas.org website network.
 Author: WebDSA
-Version: 1.1
+Version: 1.2
 Requires at least: 6.0
 Requires PHP: 8.0
 Template: pa-theme-sedes
@@ -15,3 +15,21 @@ Template: pa-theme-sedes
 @import "pa-blocks";
 @import "pa-bootstrap-custom";
 
+figure:has(+ #audiome-container) {
+  margin-bottom: 0 !important;
+}
+
+#audiome-container {
+  margin-top: 0 !important;
+  margin-bottom: 2rem !important;
+}
+
+#audiome-ref,
+#audiome-player {
+  top: 0 !important;
+}
+
+#audiomeouca {
+  font-size: 1.1rem;
+  font-weight: 600;
+}
