@@ -15,7 +15,25 @@ Template: pa-theme-sedes
 @import "pa-blocks";
 @import "pa-bootstrap-custom";
 
+figure:has(+ #audiome-container) {
+  margin-bottom: 0 !important;
+}
+
+#audiome-container {
+  margin-top: 0 !important;
+  margin-bottom: 2rem !important;
+}
+
 #audiome-ref,
 #audiome-player {
   top: 0 !important;
+}
+
+#audiomeouca {
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+#audiomelogo {
+  display: none !important;
 }
