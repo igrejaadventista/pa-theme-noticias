@@ -15,3 +15,7 @@ Template: pa-theme-sedes
 @import "pa-blocks";
 @import "pa-bootstrap-custom";
 
+#audiome-ref,
+#audiome-player {
+  top: 0 !important;
+}
