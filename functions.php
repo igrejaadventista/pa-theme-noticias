@@ -133,7 +133,6 @@ add_filter('the_content', function ($content) {
     return $content;
 }, 20);
 
-
 add_action('rest_api_init', function () {
     register_rest_field(
         array('post', 'press'),
