@@ -32,8 +32,12 @@ require_once(dirname(__FILE__) . '/core/PA_Theme_Noticias_Install.php');
 
 add_action('after_setup_theme', function () {
     load_theme_textdomain('iasd', THEME_DIR . 'language/');
-}, 9);
+}, 10);
 
+add_action('after_setup_theme', function () {
+    $locale = determine_locale();
+    load_textdomain('iasd-noticias', THEME_DIR . "language/{$locale}.mo", $locale);
+}, 10);
 
 /**
  * Remove unused taxonomies

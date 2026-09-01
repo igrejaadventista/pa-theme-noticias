@@ -16,8 +16,8 @@ class PAListPosts extends Block {
     public function __construct() {
 		// Set block settings
         parent::__construct([
-            'title' 	  => __('IASD - News - Post list', 'iasd'),
-            'description' => __('Posts list', 'iasd'),
+            'title' 	  => __('IASD - News - Post list', 'iasd-noticias'),
+            'description' => __('Posts list', 'iasd-noticias'),
             'category' 	  => 'pa-adventista',
 			'keywords' 	  => ['list', 'posts'],
 			'icon' 		  => 'megaphone',
@@ -32,7 +32,7 @@ class PAListPosts extends Block {
 	protected function setFields(): array {
 		return array_merge(
 			[
-				Text::make(__('Title', 'iasd'), 'title')
+				Text::make(__('Title', 'iasd-noticias'), 'title')
 					->defaultValue('IASD - Lista posts'),
 
 				LocalData::make('Posts', 'items')

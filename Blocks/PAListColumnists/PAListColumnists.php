@@ -16,8 +16,8 @@ class PAListColumnists extends Block {
     public function __construct() {
 		// Set block settings
         parent::__construct([
-            'title' 	  => __('IASD - News - Columnists List', 'iasd'),
-            'description' => __('List columnists', 'iasd'),
+            'title' 	  => __('IASD - News - Columnists List', 'iasd-noticias'),
+            'description' => __('List columnists', 'iasd-noticias'),
             'category' 	  => 'pa-adventista',
 			'keywords' 	  => ['list', 'posts'],
 			'icon' 		  => 'admin-users',
@@ -33,9 +33,9 @@ class PAListColumnists extends Block {
 		return array_merge(
 			[
 				Text::make('Título', 'title')
-					->defaultValue(__('IASD - List columnists', 'iasd')),
+					->defaultValue(__('IASD - List columnists', 'iasd-noticias')),
 
-				Number::make(__('Quantity', 'iasd'), 'count')
+				Number::make(__('Quantity', 'iasd-noticias'), 'count')
 					->min(1)
 					->defaultValue(4)
 			],

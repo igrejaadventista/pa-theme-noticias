@@ -200,7 +200,7 @@ class PaWpRestColumnistsController extends WP_REST_Controller {
 	protected function get_user( $id ) {
 		$error = new WP_Error(
 			'rest_user_invalid_id',
-			__('Invalid user ID.', 'iasd'),
+			__('Invalid user ID.', 'iasd-noticias'),
 			array( 'status' => 404 )
 		);
 
@@ -243,13 +243,13 @@ class PaWpRestColumnistsController extends WP_REST_Controller {
 		if ( 'edit' === $request['context'] && ! current_user_can( 'list_users' ) ) {
 			return new WP_Error(
 				'rest_user_cannot_view',
-				__('Sorry, you are not allowed to list users.', 'iasd'),
+				__('Sorry, you are not allowed to list users.', 'iasd-noticias'),
 				array( 'status' => rest_authorization_required_code() )
 			);
 		} elseif ( ! count_user_posts( $user->ID, $types ) && ! current_user_can( 'edit_user', $user->ID ) && ! current_user_can( 'list_users' ) ) {
 			return new WP_Error(
 				'rest_user_cannot_view',
-				__('Sorry, you are not allowed to list users.', 'iasd'),
+				__('Sorry, you are not allowed to list users.', 'iasd-noticias'),
 				array( 'status' => rest_authorization_required_code() )
 			);
 		}
@@ -427,7 +427,7 @@ class PaWpRestColumnistsController extends WP_REST_Controller {
 		if ( ! validate_username( $username ) ) {
 			return new WP_Error(
 				'rest_user_invalid_username',
-				__('This username is invalid because it uses illegal characters. Please enter a valid username.', 'iasd' ),
+				__('This username is invalid because it uses illegal characters. Please enter a valid username.', 'iasd-noticias'),
 				array( 'status' => 400 )
 			);
 		}
@@ -438,7 +438,7 @@ class PaWpRestColumnistsController extends WP_REST_Controller {
 		if ( in_array( strtolower( $username ), array_map( 'strtolower', $illegal_logins ), true ) ) {
 			return new WP_Error(
 				'rest_user_invalid_username',
-				__('Sorry, that username is not allowed.', 'iasd' ),
+				__('Sorry, that username is not allowed.', 'iasd-noticias'),
 				array( 'status' => 400 )
 			);
 		}
@@ -464,7 +464,7 @@ class PaWpRestColumnistsController extends WP_REST_Controller {
 		if ( empty( $password ) ) {
 			return new WP_Error(
 				'rest_user_invalid_password',
-				__('Passwords cannot be empty.', 'iasd'),
+				__('Passwords cannot be empty.', 'iasd-noticias'),
 				array( 'status' => 400 )
 			);
 		}
@@ -474,7 +474,7 @@ class PaWpRestColumnistsController extends WP_REST_Controller {
 				'rest_user_invalid_password',
 				sprintf(
 					/* translators: %s: The '\' character. */
-					__('Passwords cannot contain the "%s" character.', 'iasd'),
+					__('Passwords cannot contain the "%s" character.', 'iasd-noticias'),
 					'\\'
 				),
 				array( 'status' => 400 )
@@ -502,13 +502,13 @@ class PaWpRestColumnistsController extends WP_REST_Controller {
 			'type'       => 'object',
 			'properties' => array(
 				'id'                 => array(
-					'description' => __('Unique identifier for the user.', 'iasd' ),
+					'description' => __('Unique identifier for the user.', 'iasd-noticias'),
 					'type'        => 'integer',
 					'context'     => array( 'embed', 'view', 'edit' ),
 					'readonly'    => true,
 				),
 				'username'           => array(
-					'description' => __('Login name for the user.', 'iasd'),
+					'description' => __('Login name for the user.', 'iasd-noticias'),
 					'type'        => 'string',
 					'context'     => array( 'edit' ),
 					'required'    => true,
@@ -517,7 +517,7 @@ class PaWpRestColumnistsController extends WP_REST_Controller {
 					),
 				),
 				'name'               => array(
-					'description' => __('Display name for the user.','iasd'),
+					'description' => __('Display name for the user.', 'iasd-noticias'),
 					'type'        => 'string',
 					'context'     => array( 'embed', 'view', 'edit' ),
 					'arg_options' => array(
@@ -525,7 +525,7 @@ class PaWpRestColumnistsController extends WP_REST_Controller {
 					),
 				),
 				'first_name'         => array(
-					'description' => __('First name for the user.', 'iasd'),
+					'description' => __('First name for the user.', 'iasd-noticias'),
 					'type'        => 'string',
 					'context'     => array( 'edit' ),
 					'arg_options' => array(
@@ -533,7 +533,7 @@ class PaWpRestColumnistsController extends WP_REST_Controller {
 					),
 				),
 				'last_name'          => array(
-					'description' => __( 'Last name for the user.', 'iasd'),
+					'description' => __( 'Last name for the user.', 'iasd-noticias'),
 					'type'        => 'string',
 					'context'     => array( 'edit' ),
 					'arg_options' => array(
@@ -541,38 +541,38 @@ class PaWpRestColumnistsController extends WP_REST_Controller {
 					),
 				),
 				'email'              => array(
-					'description' => __( 'The email address for the user.', 'iasd'),
+					'description' => __( 'The email address for the user.', 'iasd-noticias'),
 					'type'        => 'string',
 					'format'      => 'email',
 					'context'     => array( 'edit' ),
 					'required'    => true,
 				),
 				'url'                => array(
-					'description' => __( 'URL of the user.', 'iasd'),
+					'description' => __( 'URL of the user.', 'iasd-noticias'),
 					'type'        => 'string',
 					'format'      => 'uri',
 					'context'     => array( 'embed', 'view', 'edit' ),
 				),
 				'description'        => array(
-					'description' => __( 'Description of the user.', 'iasd'),
+					'description' => __( 'Description of the user.', 'iasd-noticias'),
 					'type'        => 'string',
 					'context'     => array( 'embed', 'view', 'edit' ),
 				),
 				'link'               => array(
-					'description' => __( 'Author URL of the user.', 'iasd'),
+					'description' => __( 'Author URL of the user.', 'iasd-noticias'),
 					'type'        => 'string',
 					'format'      => 'uri',
 					'context'     => array( 'embed', 'view', 'edit' ),
 					'readonly'    => true,
 				),
 				'locale'             => array(
-					'description' => __( 'Locale for the user.', 'iasd'),
+					'description' => __( 'Locale for the user.', 'iasd-noticias'),
 					'type'        => 'string',
 					'enum'        => array_merge( array( '', 'en_US' ), get_available_languages() ),
 					'context'     => array( 'edit' ),
 				),
 				'nickname'           => array(
-					'description' => __( 'The nickname for the user.', 'iasd'),
+					'description' => __( 'The nickname for the user.', 'iasd-noticias'),
 					'type'        => 'string',
 					'context'     => array( 'edit' ),
 					'arg_options' => array(
@@ -580,7 +580,7 @@ class PaWpRestColumnistsController extends WP_REST_Controller {
 					),
 				),
 				'slug'               => array(
-					'description' => __( 'An alphanumeric identifier for the user.', 'iasd'),
+					'description' => __( 'An alphanumeric identifier for the user.', 'iasd-noticias'),
 					'type'        => 'string',
 					'context'     => array( 'embed', 'view', 'edit' ),
 					'arg_options' => array(
@@ -588,14 +588,14 @@ class PaWpRestColumnistsController extends WP_REST_Controller {
 					),
 				),
 				'registered_date'    => array(
-					'description' => __( 'Registration date for the user.', 'iasd'),
+					'description' => __( 'Registration date for the user.', 'iasd-noticias'),
 					'type'        => 'string',
 					'format'      => 'date-time',
 					'context'     => array( 'edit' ),
 					'readonly'    => true,
 				),
 				'roles'              => array(
-					'description' => __( 'Roles assigned to the user.', 'iasd'),
+					'description' => __( 'Roles assigned to the user.', 'iasd-noticias'),
 					'type'        => 'array',
 					'items'       => array(
 						'type' => 'string',
@@ -603,7 +603,7 @@ class PaWpRestColumnistsController extends WP_REST_Controller {
 					'context'     => array( 'edit' ),
 				),
 				'password'           => array(
-					'description' => __( 'Password for the user (never included).', 'iasd'),
+					'description' => __( 'Password for the user (never included).', 'iasd-noticias'),
 					'type'        => 'string',
 					'context'     => array(), // Password is never displayed.
 					'required'    => true,
@@ -612,13 +612,13 @@ class PaWpRestColumnistsController extends WP_REST_Controller {
 					),
 				),
 				'capabilities'       => array(
-					'description' => __( 'All capabilities assigned to the user.', 'iasd'),
+					'description' => __( 'All capabilities assigned to the user.', 'iasd-noticias'),
 					'type'        => 'object',
 					'context'     => array( 'edit' ),
 					'readonly'    => true,
 				),
 				'extra_capabilities' => array(
-					'description' => __( 'Any extra capabilities assigned to the user.', 'iasd'),
+					'description' => __( 'Any extra capabilities assigned to the user.', 'iasd-noticias'),
 					'type'        => 'object',
 					'context'     => array( 'edit' ),
 					'readonly'    => true,
@@ -634,7 +634,7 @@ class PaWpRestColumnistsController extends WP_REST_Controller {
 			foreach ( $avatar_sizes as $size ) {
 				$avatar_properties[ $size ] = array(
 					/* translators: %d: Avatar image size in pixels. */
-					'description' => sprintf( __( 'Avatar URL with image size of %d pixels.', 'iasd'), $size ),
+					'description' => sprintf( __( 'Avatar URL with image size of %d pixels.', 'iasd-noticias'), $size ),
 					'type'        => 'string',
 					'format'      => 'uri',
 					'context'     => array( 'embed', 'view', 'edit' ),
@@ -642,7 +642,7 @@ class PaWpRestColumnistsController extends WP_REST_Controller {
 			}
 
 			$schema['properties']['avatar_urls'] = array(
-				'description' => __( 'Avatar URLs for the user.', 'iasd'),
+				'description' => __( 'Avatar URLs for the user.', 'iasd-noticias'),
 				'type'        => 'object',
 				'context'     => array( 'embed', 'view', 'edit' ),
 				'readonly'    => true,
@@ -670,7 +670,7 @@ class PaWpRestColumnistsController extends WP_REST_Controller {
 		$query_params['context']['default'] = 'view';
 
 		$query_params['exclude'] = array(
-			'description' => __( 'Ensure result set excludes specific IDs.', 'iasd'),
+			'description' => __( 'Ensure result set excludes specific IDs.', 'iasd-noticias'),
 			'type'        => 'array',
 			'items'       => array(
 				'type' => 'integer',
@@ -679,7 +679,7 @@ class PaWpRestColumnistsController extends WP_REST_Controller {
 		);
 
 		$query_params['include'] = array(
-			'description' => __( 'Limit result set to specific IDs.', 'iasd'),
+			'description' => __( 'Limit result set to specific IDs.', 'iasd-noticias'),
 			'type'        => 'array',
 			'items'       => array(
 				'type' => 'integer',
@@ -688,20 +688,20 @@ class PaWpRestColumnistsController extends WP_REST_Controller {
 		);
 
 		$query_params['offset'] = array(
-			'description' => __( 'Offset the result set by a specific number of items.', 'iasd'),
+			'description' => __( 'Offset the result set by a specific number of items.', 'iasd-noticias'),
 			'type'        => 'integer',
 		);
 
 		$query_params['order'] = array(
 			'default'     => 'asc',
-			'description' => __( 'Order sort attribute ascending or descending.', 'iasd'),
+			'description' => __( 'Order sort attribute ascending or descending.', 'iasd-noticias'),
 			'enum'        => array( 'asc', 'desc' ),
 			'type'        => 'string',
 		);
 
 		$query_params['orderby'] = array(
 			'default'     => 'name',
-			'description' => __( 'Sort collection by user attribute.', 'iasd'),
+			'description' => __( 'Sort collection by user attribute.', 'iasd-noticias'),
 			'enum'        => array(
 				'id',
 				'include',
@@ -716,7 +716,7 @@ class PaWpRestColumnistsController extends WP_REST_Controller {
 		);
 
 		$query_params['slug'] = array(
-			'description' => __( 'Limit result set to users with one or more specific slugs.', 'iasd'),
+			'description' => __( 'Limit result set to users with one or more specific slugs.', 'iasd-noticias'),
 			'type'        => 'array',
 			'items'       => array(
 				'type' => 'string',
@@ -724,7 +724,7 @@ class PaWpRestColumnistsController extends WP_REST_Controller {
 		);
 
 		$query_params['roles'] = array(
-			'description' => __( 'Limit result set to users matching at least one specific role provided. Accepts csv list or single role.', 'iasd'),
+			'description' => __( 'Limit result set to users matching at least one specific role provided. Accepts csv list or single role.', 'iasd-noticias'),
 			'type'        => 'array',
 			'items'       => array(
 				'type' => 'string',
@@ -732,7 +732,7 @@ class PaWpRestColumnistsController extends WP_REST_Controller {
 		);
 
 		$query_params['who'] = array(
-			'description' => __( 'Limit result set to users who are considered authors.', 'iasd'),
+			'description' => __( 'Limit result set to users who are considered authors.', 'iasd-noticias'),
 			'type'        => 'string',
 			'enum'        => array(
 				'authors',

@@ -134,11 +134,11 @@ function getHeaderTitle($post_id = NULL)
     $format = getPostFormat(get_the_ID());
     if (!empty($format)) {
         if (is_archive() && is_author() || $format->slug == 'coluna') //is archive
-            return __('Column', 'iasd') . ' | ' . (is_author() ? get_queried_object()->display_name : get_the_author_meta('display_name'));
+            return __('Column', 'iasd-noticias') . ' | ' . (is_author() ? get_queried_object()->display_name : get_the_author_meta('display_name'));
     }
 
     if (get_post_type(get_the_ID()) == 'press')
-        return __('Press room', 'iasd') . ' | ' . getPostFormat(get_the_ID())->name;
+        return __('Press room', 'iasd-noticias') . ' | ' . getPostFormat(get_the_ID())->name;
 
     if (is_singular('post')) { //is single
         $nameEditorial = getPostEditorial($post_id);
