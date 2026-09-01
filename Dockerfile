@@ -17,7 +17,7 @@ RUN composer clearcache
 RUN cd /var/www/build \
   && composer install --no-dev \
   && composer dump -o \
-  && yarn \
+  && yarn --ignore-engines \
   && yarn build:production
 
 RUN cd /var/www/build \
