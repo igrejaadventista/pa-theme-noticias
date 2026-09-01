@@ -24,19 +24,19 @@ class PaAcfHomeFields
     function createACFFields($template, $postType, $taxonomies)
     {
         register_extended_field_group([
-            'title' => __('Features','iasd'),
+            'title' => __('Features', 'iasd-noticias'),
             'key'   => "featured_{$postType}",
             'style' => 'default',
             'fields' => [
-                ButtonGroup::make(__('Model','iasd'), 'featured_layout')
-                    ->instructions(__('This selection will influence the amount of items displayed in the highlight..', 'iasd'))
+                ButtonGroup::make(__('Model', 'iasd-noticias'), 'featured_layout')
+                    ->instructions(__('This selection will influence the amount of items displayed in the highlight..', 'iasd-noticias'))
                     ->choices([
                         1 => '1 post',
                         2 => '2 posts',
                         3 => '3 posts',
                     ])
                     ->defaultValue(1),
-                LocalData::make(__('Featured posts', 'iasd'), "featured_items")
+                LocalData::make(__('Featured posts', 'iasd-noticias'), "featured_items")
                     ->instructions("")
                     ->postTypes([$postType])
                     ->initialLimit(10)
@@ -52,12 +52,12 @@ class PaAcfHomeFields
 
     function createACFFieldsContext(){
         register_extended_field_group([
-            'title' => __('Headquarter','iasd'),
+            'title' => __('Headquarter', 'iasd-noticias'),
             'key'   => "context",
             'style' => 'default',
             'fields' => [
-                Taxonomy::make(__('Headquarter','iasd'), 'context')
-                    ->instructions(__('Select the regional headquarters to filter page contents on-page.', 'iasd'))
+                Taxonomy::make(__('Headquarter', 'iasd-noticias'), 'context')
+                    ->instructions(__('Select the regional headquarters to filter page contents on-page.', 'iasd-noticias'))
                     ->taxonomy('xtt-pa-sedes')
                     ->appearance('select')
                     ->required()

@@ -32,8 +32,12 @@ require_once(dirname(__FILE__) . '/core/PA_Theme_Noticias_Install.php');
 
 add_action('after_setup_theme', function () {
     load_theme_textdomain('iasd', THEME_DIR . 'language/');
-}, 9);
+}, 10);
 
+add_action('after_setup_theme', function () {
+    $locale = determine_locale();
+    load_textdomain('iasd-noticias', THEME_DIR . "language/{$locale}.mo", $locale);
+}, 10);
 
 /**
  * Remove unused taxonomies
@@ -118,6 +122,20 @@ add_filter('script_loader_tag', function ($tag, $handle) {
     return $tag;
 }, 10, 2);
 
+add_filter('the_content', function ($content) {
+    if (is_admin() || !is_singular('post') || str_contains($content, 'id="audiome-container"'))
+        return $content;
+
+    $container = '<div id="audiome-container"></div><script async src="https://readme.ai/files/adventistas.js"></script>';
+
+    if (preg_match('/(<figure\b[^>]*>.*?<\/figure>)/is', $content))
+        return preg_replace('/(<figure\b[^>]*>.*?<\/figure>)/is', '$1' . $container, $content, 1);
+
+    if (preg_match('/(<img\b[^>]*>)/i', $content))
+        return preg_replace('/(<img\b[^>]*>)/i', '$1' . $container, $content, 1);
+
+    return $content;
+}, 20);
 
 add_action('rest_api_init', function () {
     register_rest_field(
@@ -232,10 +250,10 @@ add_filter('map_meta_cap', 'restringir_adicionar_termos_editores', 10, 3);
 /**
  * Ajusta o limite do tamanho da imagem para 8000 pixels no WordPress.
  *
- * O WordPress introduziu um novo recurso a partir da versão 5.3 que impede 
- * o upload de imagens com mais de 2560 pixels (altura ou largura). 
- * O objetivo é evitar o uso de imagens muito grandes que possam impactar 
- * a performance do site. No entanto, em alguns casos, pode ser necessário 
+ * O WordPress introduziu um novo recurso a partir da versão 5.3 que impede
+ * o upload de imagens com mais de 2560 pixels (altura ou largura).
+ * O objetivo é evitar o uso de imagens muito grandes que possam impactar
+ * a performance do site. No entanto, em alguns casos, pode ser necessário
  * ajustar este limite. A função `adjust_big_image_size_threshold` tem este propósito.
  *
  * @param int   $threshold  O limite padrão de tamanho da imagem em pixels (altura ou largura).

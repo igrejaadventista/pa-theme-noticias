@@ -17,7 +17,7 @@
 							if(get_query_var('paged') < 1 && $queryFeatured->found_posts > 0):
 							get_template_part('template-parts/global/feature', 'feature', [
 								'post' => $queryFeatured->posts[0],
-								'tag'  => $format = get_post_format($queryFeatured->posts[0]) ? : __('News', 'iasd'),
+								'tag'  => $format = get_post_format($queryFeatured->posts[0]) ? : __('News', 'iasd-noticias'),
 							]); 
 							endif;
 						endif;
@@ -40,7 +40,7 @@
 								get_template_part('template-parts/global/card-post', 'card-post', [
 									'post'     => $post,
 									'category' => !empty($categories) ? $categories[0]->name : '',
-									'format'   => get_post_format($post) ? : __('News', 'iasd'),
+									'format'   => get_post_format($post) ? : __('News', 'iasd-noticias'),
 								]); 
 							endforeach; 
 						@endphp

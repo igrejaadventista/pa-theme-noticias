@@ -16,8 +16,8 @@ class PAContact extends Block {
     public function __construct() {
 		// Set block settings
         parent::__construct([
-            'title' 	  => __('IASD - News - Contact', 'iasd'),
-            'description' => __('Contact block', 'iasd'),
+            'title' 	  => __('IASD - News - Contact', 'iasd-noticias'),
+            'description' => __('Contact block', 'iasd-noticias'),
             'category' 	  => 'pa-adventista',
 			'keywords' 	  => ['contact', 'text'],
 			'icon' 		  => 'format-chat',
@@ -31,15 +31,15 @@ class PAContact extends Block {
 	 */
 	protected function setFields(): array {
 		return [
-			Text::make(__('Title', 'iasd'), 'title')
-				->defaultValue(__('IASD - Noticias - Contact', 'iasd')),
+			Text::make(__('Title', 'iasd-noticias'), 'title')
+				->defaultValue(__('IASD - Noticias - Contact', 'iasd-noticias')),
 
-			Text::make(__('Description', 'iasd'), 'description')
-				->defaultValue(__('IASD - Noticias - Contact', 'iasd')),
+			Text::make(__('Description', 'iasd-noticias'), 'description')
+				->defaultValue(__('IASD - Noticias - Contact', 'iasd-noticias')),
 
-			Email::make(__('Email', 'iasd'), 'email'),
+			Email::make(__('Email', 'iasd-noticias'), 'email'),
 
-			PhoneNumber::make(__('Phone', 'iasd'), 'phone')
+			PhoneNumber::make(__('Phone', 'iasd-noticias'), 'phone')
 		];
 	}
 	    
