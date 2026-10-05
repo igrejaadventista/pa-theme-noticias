@@ -20,7 +20,12 @@
                     {{-- Post header --}}
                     @include('template-parts.single.header', array('format_slug' => $format_slug))
 
-                    {{-- Conteúdo do post --}}
+                    {{-- Resumo por IA --}}
+                    @if (function_exists('pa_ai_summary_render'))
+                        {!! pa_ai_summary_render(get_the_ID()) !!}
+                    @endif
+
+                    {{-- ConteÃºdo do post --}}
                     <div class="pa-content">
                         @if (!empty($format_slug))
 
@@ -45,6 +50,8 @@
                     </div>
 
                     <div class="pa-break d-block my-5 py-2"></div>
+
+                    @include('template-parts.single.newsletter')
 
                     {{-- Post footer --}}
                     @include('template-parts.single.footer')
