@@ -51,8 +51,6 @@
 
                     <div class="pa-break d-block my-5 py-2"></div>
 
-                    @include('template-parts.single.newsletter')
-
                     {{-- Post footer --}}
                     @include('template-parts.single.footer')
                 </article>
