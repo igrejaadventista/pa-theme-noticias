@@ -15,6 +15,7 @@ define('ACF_TO_REST_API_REQUEST_VERSION', 2);
 $ChildBlocks = new \Blocks\ChildBlocks;
 
 require_once(dirname(__FILE__) . '/classes/controllers/PA_ACF_HomeFields.class.php');
+require_once(dirname(__FILE__) . '/classes/controllers/PA_ACF_Newsletter.class.php');
 require_once(dirname(__FILE__) . '/classes/controllers/PA_ACF_PostFields.class.php');
 require_once(dirname(__FILE__) . '/classes/controllers/PA_ACF_UserFields.class.php');
 require_once(dirname(__FILE__) . '/classes/controllers/PA_Enqueue_Files.class.php');
