@@ -3,7 +3,7 @@
 @endphp
 
 @if(is_singular('post'))
-    <div class="pa-post-meta mb-2">{{__('By', 'iasd')}}
+    <div class="pa-post-meta mb-2">{{__('By', 'iasd-noticias')}}
         <span>{{ getCurrentAuthor($id) }}</span>
         @if($region = getPostRegion($id))
             <em class="pa-pipe">|</em>

@@ -147,6 +147,12 @@ msgstr "Post em destaque"
 msgid "Headquarter"
 msgstr "Sede regional"
 
+#: core/PA_Theme_Noticias_Install.php:111
+#: core/PA_Theme_Noticias_Install.php:112
+#: core/PA_Theme_Noticias_Install.php:119
+msgid "Classification"
+msgstr "Classificação"
+
 #: classes/controllers/PA_ACF_HomeFields.class.php:60
 msgid "Select the regional headquarters to filter page contents on-page."
 msgstr "Selecione a sede regional para filtrar os conteúdos na página."

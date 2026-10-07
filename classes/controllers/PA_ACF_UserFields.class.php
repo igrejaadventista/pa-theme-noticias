@@ -14,7 +14,7 @@ class PaAcfUserFields {
 
     function createACFFields() {
         register_extended_field_group([
-            'title'  => __('Additional Information','iasd'),
+            'title'  => __('Additional Information', 'iasd-noticias'),
             'style'  => 'default',
             'fields' => [
                 Image::make('Avatar', 'user_avatar')
@@ -30,12 +30,12 @@ class PaAcfUserFields {
         ]);
 
         register_extended_field_group([
-            'title'  => __('Column information', 'iasd'),
+            'title'  => __('Column information', 'iasd-noticias'),
             'style'  => 'default',
             'fields' => [
-                Text::make(__('Column name','iasd'), 'column_name')
+                Text::make(__('Column name', 'iasd-noticias'), 'column_name')
                     ->required(),
-                Textarea::make(__('Column excerpt', 'iasd'), 'column_excerpt')
+                Textarea::make(__('Column excerpt', 'iasd-noticias'), 'column_excerpt')
                     ->required(),
             ],
             'location' => [

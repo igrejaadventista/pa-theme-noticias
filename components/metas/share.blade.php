@@ -9,7 +9,7 @@
             @if(get_post_meta(get_the_ID(), 'amazon_polly_enable', true))
                 <li class="pa-text-listen list-inline-item">
                     <a href="#" class="rounded p-2" onclick="pa_play(event, this)">
-                        <i class="fas fa-volume-up"></i> {{__('Hear text', 'iasd')}}
+                        <i class="fas fa-volume-up"></i> {{__('Hear text', 'iasd-noticias')}}
                     </a>
 
                     <audio id="pa-accessibility-player" src="{{ get_post_meta(get_the_ID(), 'amazon_polly_audio_link_location', true) }}" controls></audio>

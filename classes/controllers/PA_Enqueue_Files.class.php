@@ -10,7 +10,11 @@ class PA_Enqueue_Files
 
 	public function RegisterChildAssets()
 	{
-		wp_enqueue_style('pa-child-style', get_stylesheet_uri());
+		// style.css com versionamento por filemtime para cache bust após build
+		$style_path = get_stylesheet_directory() . '/style.css';
+		$version    = file_exists($style_path) ? filemtime($style_path) : null;
+		wp_enqueue_style('pa-child-style', get_stylesheet_uri(), [], $version);
+
 		wp_enqueue_script('pa-child-script', get_stylesheet_directory_uri() . '/assets/js/script.js', array(), false, false);
 		wp_localize_script(
 			'pa-child-script',
@@ -35,16 +39,11 @@ class PA_Enqueue_Files
 						'taxonomies'   => [
 							'xtt-pa-editorias',
 							'xtt-pa-owner',
-							'xtt-pa-sedes'
+							'xtt-pa-sedes',
+                            'xtt-pa-class',
+                            'xtt-pa-classification'
 						],
 					],
-					[
-						'post_type'    => 'press',
-						'taxonomies'   => [
-							'xtt-pa-editorias',
-							'xtt-pa-owner'
-						],
-					]
 				],
 				'unregisterBlocks' => [
 					'acf/p-a-magazines',
@@ -63,3 +62,4 @@ class PA_Enqueue_Files
 	}
 }
 $PA_Enqueue_Files = new PA_Enqueue_Files();
+

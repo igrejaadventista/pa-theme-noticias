@@ -2,6 +2,7 @@ style.css
 style.css.map
 mix-manifest.json
 yarn.lock
+package-lock.json
 .sass-cache
 node_modules
 vendor

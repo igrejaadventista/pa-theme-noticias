@@ -16,8 +16,8 @@ class PAListPress extends Block {
     public function __construct() {
 		// Set block settings
         parent::__construct([
-            'title' 	  => __('IASD - News - Press list', 'iasd'),
-            'description' => __('List press posts', 'iasd'),
+            'title' 	  => __('IASD - News - Press list', 'iasd-noticias'),
+            'description' => __('List press posts', 'iasd-noticias'),
             'category' 	  => 'pa-adventista',
 			'keywords' 	  => ['list', 'posts', 'press'],
 			'icon' 		  => 'megaphone',
@@ -33,7 +33,7 @@ class PAListPress extends Block {
 		return array_merge(
 			[
 				Text::make(__('Title', 'title'))
-					->defaultValue(__('IASD - List press', 'iasd')),
+					->defaultValue(__('IASD - List press', 'iasd-noticias')),
 
 				LocalData::make('Posts', 'items')
 					->postTypes(['press'])

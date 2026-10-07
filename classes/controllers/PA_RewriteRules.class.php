@@ -37,7 +37,7 @@ class PaRewriteRules
     
     public static function RewritePostPressRoom()
     {
-        $permalink = sanitize_title(__('press-room-slug','iasd')) . '/%tipo%/%postname%/';
+        $permalink = sanitize_title(__('press-room-slug', 'iasd-noticias')) . '/%tipo%/%postname%/';
         $permalink = str_replace('%tipo%', '([^/]+)', $permalink);
         $permalink = str_replace('%postname%', '([^/]+)', $permalink);
         $permalink .= '?$';
@@ -48,7 +48,7 @@ class PaRewriteRules
 
     public static function RewriteTermPressRoomType()
     {
-        $permalink = sanitize_title(__('press-room-slug','iasd')) . '/%tipo%/';
+        $permalink = sanitize_title(__('press-room-slug', 'iasd-noticias')) . '/%tipo%/';
         $permalink = str_replace('%tipo%', '([^/]+)', $permalink);
         $permalink .= '?$';
         $rewrite_redirect = 'index.php?term=$matches[1]&xtt-pa-press-type=$matches[1]&post_type=press';
@@ -58,7 +58,7 @@ class PaRewriteRules
 
     public static function RewritePostNews()
     {
-        $permalink = sanitize_title(__('news-slug','iasd')) . '/%editoria%/%postname%/';
+        $permalink = sanitize_title(__('news-slug', 'iasd-noticias')) . '/%editoria%/%postname%/';
         $permalink = str_replace('%editoria%', '([^/]+)', $permalink);
         $permalink = str_replace('%postname%', '([^/]+)', $permalink);
         $permalink .= '?$';
@@ -69,7 +69,7 @@ class PaRewriteRules
 
     public static function RewritePostColumns()
     {
-        $permalink = sanitize_title(__('columns-slug','iasd')) . '/%author%/%postname%/';
+        $permalink = sanitize_title(__('columns-slug', 'iasd-noticias')) . '/%author%/%postname%/';
         $permalink = str_replace('%author%', '([^/]+)', $permalink);
         $permalink = str_replace('%postname%', '([^/]+)', $permalink);
         $permalink .= '?$';
@@ -80,7 +80,7 @@ class PaRewriteRules
 
     public static function RewriteAuthor()
     {
-        $permalink = sanitize_title(__('columns-slug','iasd')) . '/%author%/';
+        $permalink = sanitize_title(__('columns-slug', 'iasd-noticias')) . '/%author%/';
         $permalink = str_replace('%author%', '([^/]+)', $permalink);
         $permalink .= '?$';
         $rewrite_redirect = 'index.php?author_name=$matches[1]';
@@ -102,11 +102,11 @@ class PaRewriteRules
                 
                 if(!empty($post_format)){
                     if ($post_format[0]->slug == 'coluna' || $post_format[0]->slug == 'columna') {
-                        $permalink = str_replace('/%postname%/', sanitize_title(__('columns-slug','iasd')) . '/' . $author . '/%postname%/', $permalink);
+                        $permalink = str_replace('/%postname%/', sanitize_title(__('columns-slug', 'iasd-noticias')) . '/' . $author . '/%postname%/', $permalink);
                     }
                 } else {
                     if (!empty($editorias)) {
-                        $permalink = str_replace('/%postname%/', sanitize_title(__('news-slug','iasd')) . '/' .  $editorias[0]->slug . '/%postname%/', $permalink);
+                        $permalink = str_replace('/%postname%/', sanitize_title(__('news-slug', 'iasd-noticias')) . '/' .  $editorias[0]->slug . '/%postname%/', $permalink);
                     }
                 }
             }
@@ -117,7 +117,7 @@ class PaRewriteRules
             $p_name=$post->post_name;
             $tipos = get_the_terms($post->ID, 'xtt-pa-press-type');
             $tipo = $tipos[0]->slug;
-            $permalink = home_url( sanitize_title(__('press-room-slug','iasd')) . '/' . $tipo . "/" . $p_name . "/");
+            $permalink = home_url( sanitize_title(__('press-room-slug', 'iasd-noticias')) . '/' . $tipo . "/" . $p_name . "/");
         }
 
         return $permalink;
@@ -126,7 +126,7 @@ class PaRewriteRules
     public static function ChangeAuthorPermalink($vars) 
     {
         global $wp_rewrite;
-        $wp_rewrite->author_base = sanitize_title(__('columns-slug','iasd'));
+        $wp_rewrite->author_base = sanitize_title(__('columns-slug', 'iasd-noticias'));
         $wp_rewrite->flush_rules();
     }
 }
